@@ -6,14 +6,13 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:02:27 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/25 20:03:11 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:59:09 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
 
-# include <libft.h>
 # include <ft_printf.h>
 # include <stdio.h>
 

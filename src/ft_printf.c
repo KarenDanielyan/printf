@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 20:04:42 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/26 15:34:23 by kdaniely         ###   ########.fr       */
+/*   Created: 2023/01/25 17:49:40 by kdaniely          #+#    #+#             */
+/*   Updated: 2023/01/26 15:34:03 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "ft_printf.h"
 
-int main(void)
+
+int ft_printf(const char *kek, ...)
 {
-    int n;
-
-    n = ft_printf("bobo %d\n", "boo");
-    return (0);
+	(void)kek;
+	return (1);
 }

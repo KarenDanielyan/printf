@@ -2,39 +2,49 @@ NAME		=	test
 
 BIN			=	../bin
 
+BUILD		=	./build
+
 DEP			=	test.h Makefile
 
 SRC			=	../src
 
-LIBFT		=	../src/libft
-
 SOURCES		=	$(wildcard *.c)
 
-CC 			= 	cc
+OBJS		=	$(addprefix $(BUILD)/, $(SOURCES:.c=.o))
+
+CC 			= 	gcc
 
 RM			=	rm -rf
 
 CFLAGS		=	-Wall -Wextra -Werror -g
 
-LFLAGS		=	-L../src/ -L../src/libft -lftprintf -lft
+LFLAGS		=	-L../src/ -lftprintf
 
 IFLAGS		=	-I../src/include 
 
-all:		$(NAME)
+#$(BUILD)/%.o: %.c
+#				$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+
+all:			$(BIN)/$(NAME)
+
+#$(BUILD):
+#					@mkdir $(BUILD)
 
 $(BIN):
-				@mkdir $(BIN)
+					@mkdir $(BIN)
 
-$(NAME):	$(BIN) $(DEP)
-				$(MAKE) --directory=$(LIBFT)
-				$(MAKE) --directory=$(SRC)
-				$(CC) $(CFLAGS) $(IFLAGS) $(SOURCES) $(LFLAGS) -o $(BIN)/$(NAME)
+$(BIN)/$(NAME):	$(BIN) $(SOURCES) $(DEP)
+					$(MAKE) --directory=$(SRC)
+					$(CC) $(CFLAGS) $(IFLAGS) $(SOURCES) $(LFLAGS) -o $(BIN)/$(NAME)
 
-clean:		
-				$(MAKE) --directory=$(LIBFT) clean
-				$(MAKE) --directory=$(SRC) clean
+#clean:		
+#				$(MAKE) --directory=$(SRC) clean
+#				$(RM) $(OBJS) 
+
+fclean:			#clean		
+				$(MAKE) --directory=$(SRC) fclean
 				$(RM) $(BIN)/$(NAME)
 
-re:			clean $(NAME)
+re:			fclean $(BIN)/$(NAME)
 
-.PHONY:		all clean re
+.PHONY:		all clean fclean re
