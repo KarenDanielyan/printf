@@ -25,7 +25,7 @@ LFLAGS		=	-L../src/ -lftprintf
 IFLAGS		=	-I../src/include 
 
 $(BUILD)/%.o: %.c $(DEP)
-				$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+				$(CC) $(IFLAGS) -o $@ -c $<
 
 all:			$(BIN)/$(NAME)
 
@@ -39,7 +39,7 @@ $(PRINTF):
 					$(MAKE) --directory=$(SRC)
 
 $(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) | $(PRINTF)
-					$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) $(IFLAGS) -o $(BIN)/$(NAME)
+					$(CC) $(OBJS) $(LFLAGS) $(IFLAGS) -o $(BIN)/$(NAME)
 
 debug:			fclean $(BIN) $(SOURCES) $(DEP)
 					$(MAKE) --directory=$(SRC) debug
