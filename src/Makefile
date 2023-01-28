@@ -14,7 +14,7 @@ CC 			= 	cc
 
 RM			=	rm -rf
 
-CFLAGS		=	-Wall -Wextra -Werror -Wpedantic
+CFLAGS		=	-g3 -fPIC -Wall -Wextra -Werror -Wpedantic
 
 LFLAGS		=
 

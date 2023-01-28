@@ -6,14 +6,17 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:04:42 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/26 22:50:06 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:58:15 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
-#include <unistd.h>
+#include <stdarg.h>
 
 int main(void)
 {
+    printf("Hello World!!!");
+    fflush(NULL);
+    ft_printf("kek", 431);
     return (0);
 }

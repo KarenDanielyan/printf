@@ -1,6 +1,6 @@
 NAME		=	test
 
-BIN			=	../bin
+BIN			=	./bin
 
 BUILD		=	./build
 
@@ -18,14 +18,14 @@ CC 			= 	gcc
 
 RM			=	rm -rf
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-g -fPIC -Wall -Wextra -Werror
 
-LFLAGS		=	-L../src/ -L../bin/ -lftprintf
+LFLAGS		=	-L../src/ -lftprintf
 
 IFLAGS		=	-I../src/include 
 
 $(BUILD)/%.o: %.c
-				$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+				$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -o $@ -c $<
 
 all:			$(BIN)/$(NAME)
 
@@ -38,8 +38,8 @@ $(BIN):
 $(PRINTF):
 					$(MAKE) --directory=$(SRC)
 
-$(BIN)/$(NAME):	$(BIN) $(OBJS) $(DEP) | $(PRINTF)
-					$(CC) $(IFLAGS) $(LFLAGS) $(OBJS) -o $(BIN)/$(NAME)
+$(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) $(DEP) | $(PRINTF)
+					$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) $(IFLAGS) -o $(BIN)/$(NAME)
 
 debug:			fclean $(BIN) $(SOURCES) $(DEP)
 					$(MAKE) --directory=$(SRC) debug
