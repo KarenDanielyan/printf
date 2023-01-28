@@ -24,8 +24,8 @@ LFLAGS		=	-L../src/ -lftprintf
 
 IFLAGS		=	-I../src/include 
 
-$(BUILD)/%.o: %.c
-				$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -o $@ -c $<
+$(BUILD)/%.o: %.c $(DEP)
+				$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
 
 all:			$(BIN)/$(NAME)
 
@@ -38,7 +38,7 @@ $(BIN):
 $(PRINTF):
 					$(MAKE) --directory=$(SRC)
 
-$(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) $(DEP) | $(PRINTF)
+$(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) | $(PRINTF)
 					$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) $(IFLAGS) -o $(BIN)/$(NAME)
 
 debug:			fclean $(BIN) $(SOURCES) $(DEP)
@@ -54,5 +54,8 @@ fclean:			clean
 				$(RM) $(BIN)/$(NAME)
 
 re:			fclean $(BIN)/$(NAME)
+
+.PHONY run: all
+			./bin/test
 
 .PHONY:		all debug clean fclean re
