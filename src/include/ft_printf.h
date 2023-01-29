@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:47:39 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 18:08:38 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 02:01:12 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # define BONUS			"# +"
 # define FORMAT_FLAGS 	"cspdiuxX%"
@@ -33,6 +34,7 @@ char	*ft_strchr(const char *str, int c);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_putnbr(int nbr, char bonus);
+int		ft_putunbr(unsigned int nbr);
 int		ft_putptr(uintptr_t ptr, char *base);
 int		ft_puthex(unsigned int nbr, const char *f_str, char bonus);
 

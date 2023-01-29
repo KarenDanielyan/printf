@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:09:15 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 12:54:55 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/29 20:22:08 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int	ft_putstr(char *str)
 			write(STDOUT_FILENO, str++, 1);
 			count ++;
 		}
+	}
+	else
+	{
+		count = 6;
+		write(STDOUT_FILENO, "(null)", 6);
 	}
 	return (count);
 }

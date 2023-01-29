@@ -6,27 +6,15 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:04:42 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 18:09:34 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 02:24:09 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-/*static void helper(const char *s, ...)
+int main()
 {
-    va_list args;
-
-    va_start(args, s);
-    printf(s, args);
-    fflush(NULL);
-    printf("\n");
-    ft_printf(s, args);
-}*/
-
-int main(void)
-{
-    int n = 214;
-    printf("PTR:zzzzzzzzzzzzzzzzzzzz %zzzzzzzz\tzzzp\n", (void *)&n);
-    ft_printf("PTR:zzzzzzzzzzzzzzzzzzzz %zzzzzzzz\tzzzp\n", (void *)&n);
+    printf("%+d", 0);
+    ft_printf("%+d", 0);
     return (0);
 }

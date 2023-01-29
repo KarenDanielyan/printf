@@ -6,26 +6,39 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:50:08 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 18:04:34 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 02:21:36 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putunbr(unsigned int nbr)
+{
+	char	*num;
+	int		count;
+
+	num = ft_itoa_base(nbr, DECIMAL);
+	count = ft_putstr(num);
+	free(num);
+	return (count);
+}
 
 int	ft_putnbr(int nbr, char bonus)
 {
 	char	*num;
 	int		count;
 
+	count = 0;
 	if (nbr > 0)
 	{
 		if (bonus == ' ')
 			write(STDOUT_FILENO, " ", 1);
 		else if (bonus == '+')
 			write(STDOUT_FILENO, "+", 1);
+		count += 1;
 	}
 	num = ft_itoa_base(nbr, DECIMAL);
-	count = ft_putstr(num);
+	count += ft_putstr(num);
 	free(num);
 	return (count);
 }
@@ -57,18 +70,20 @@ int	ft_puthex(unsigned int nbr, const char *f_str, char bonus)
 	char	*num;
 	int		count;
 
+	count = 0;
 	if (bonus == '#')
 	{
 		if (*f_str == 'x')
 			write(STDOUT_FILENO, "0x", 2);
 		else if (*f_str == 'X')
 			write(STDOUT_FILENO, "0X", 2);
+		count += 2;
 	}
 	if (*f_str == 'x')
 		num = ft_itoa_base(nbr, L_HEX);
 	else
 		num = ft_itoa_base(nbr, B_HEX);
-	count = ft_putstr(num);
+	count += ft_putstr(num);
 	free(num);
 	return (count);
 }

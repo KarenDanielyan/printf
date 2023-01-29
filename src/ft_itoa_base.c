@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:37 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 16:57:08 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 01:38:40 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static long	count_digits(unsigned long digits, const char *base)
 	while (digits > base_len)
 	{
 		i ++;
-		digits /= base_len;
+		digits /= (base_len + 1);
 	}
 	return (i);
 }

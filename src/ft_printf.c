@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:49:40 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 18:08:22 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 02:35:06 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	check_flag(const char *s, va_list args, char bonus)
 	if (*s == 'd' || *s == 'i')
 		count += ft_putnbr(va_arg(args, int), bonus);
 	else if (*s == 'u')
-		count += ft_putnbr(va_arg(args, unsigned int), 0);
+		count += ft_putunbr(va_arg(args, unsigned int));
 	else if (*s == 's')
 		count += ft_putstr(va_arg(args, char *));
 	else if (*s == 'c')
@@ -28,7 +28,7 @@ static int	check_flag(const char *s, va_list args, char bonus)
 	else if (*s == 'p')
 	{
 		write(STDOUT_FILENO, "0x", 2);
-		count += ft_putptr(va_arg(args, uintptr_t), L_HEX);
+		count += ft_putptr(va_arg(args, uintptr_t), L_HEX) + 2;
 	}
 	else if (*s == 'x' || *s == 'X')
 		count += ft_puthex(va_arg(args, unsigned int), s, bonus);
@@ -70,6 +70,7 @@ int	ft_printf(const char *str, ...)
 	va_list	args;
 	int		count;
 	char	*s;
+	char	*tmp;
 
 	va_start(args, str);
 	if (!str)
@@ -78,13 +79,16 @@ int	ft_printf(const char *str, ...)
 	s = (char *)str;
 	while (*s)
 	{
-		s = on_format(s, args, &count);
-		if (*s)
+		if (*s == '%')
+			tmp = on_format(s, args, &count);
+		if (s == tmp && *s)
 		{
 			write(STDOUT_FILENO, s, 1);
 			s ++;
 			count ++;
 		}
+		else
+			s = tmp;
 	}
 	va_end(args);
 	return (count);
