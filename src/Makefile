@@ -14,7 +14,7 @@ CC 			= 	cc
 
 RM			=	rm -rf
 
-CFLAGS		=	-g3 -fPIC -Wall -Wextra -Werror -Wpedantic
+CFLAGS		=	-g3 -Wall -Wextra -Werror -Wpedantic
 
 LFLAGS		=
 
@@ -22,7 +22,7 @@ IFLAGS		=	-I./include
 
 AR			=	ar rcs
 
-$(BUILD)/%.o: %.c	$(SOURCES) $(DEP)
+$(BUILD)/%.o: %.c	$(DEP)
 				$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -c -o $@ $<
 
 all:		$(NAME)

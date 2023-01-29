@@ -6,36 +6,39 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:50:08 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/28 16:06:26 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:13:44 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(int nbr, const char *f_str, char bonus)
 {
-	unsigned int	temp;
-	char			buf;
-	int				count;
+	char	*num;
+	int		count;
 
-	temp = nbr;
-	count = 0;
-	if (nbr < 0)
+	if (nbr > 0)
 	{
-		temp = (unsigned int)(-1 * nbr);
-		write(STDOUT_FILENO, "-", 1);
-		count ++;
+		if (*(f_str - 1) == ' ')
+			write(STDOUT_FILENO, " ", 1);
+		else if (*(f_str - 1) == '+')
+			write(STDOUT_FILENO, "+", 1);
 	}
-	if (temp > 9)
-	{
-		count += ft_putnbr(temp / 10);
-		count += ft_putnbr(temp % 10);
-	}
-	else
-	{
-		buf = '0' + temp;
-		write(STDOUT_FILENO, &buf, 1);
-		count ++;
-	}
+	num = ft_itoa_base(nbr, DECIMAL);
+	count = ft_putstr(num);
+	free(num);
 	return (count);
+}
+
+int	ft_puthex(uintptr_t nbr, const char *f_str)
+{
+ 	char	*num;
+	int		count;
+
+	if ( == '#')
+	{
+		if (*f_str == 'x' || *f_str == 'p')
+			write(STDOUT_FILENO, "0x", 2);
+		else if (*)
+	}
 }

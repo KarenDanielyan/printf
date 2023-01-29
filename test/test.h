@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:02:27 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/28 12:55:27 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:20:41 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 # include <ft_printf.h>
 # include <stdio.h>
+# include <stdarg.h>
+# include <limits.h>
+# include <stddef.h>
 
 # endif
