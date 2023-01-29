@@ -38,7 +38,7 @@ $(BIN):
 $(PRINTF):
 					$(MAKE) --directory=$(SRC)
 
-$(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) 
+$(BIN)/$(NAME):	$(BUILD) $(BIN) $(OBJS) | $(PRINTF)
 					$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) $(IFLAGS) -o $(BIN)/$(NAME)
 
 debug:			fclean $(BIN) $(SOURCES) $(DEP)

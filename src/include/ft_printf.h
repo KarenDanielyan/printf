@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:47:39 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 16:12:55 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:08:38 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,22 @@
 # define ESCAPE_SEQ		"\\\"\t\b\a\?\r\f\v\n"
 # define DECIMAL		"0123456789"
 # define OCTAL			"01234567"
-# define HEX			"0123456789ABCDEF"
-# define HEx			"0123456789abcdef"
+# define B_HEX			"0123456789ABCDEF"
+# define L_HEX			"0123456789abcdef"
 
 /* Helper Functions */
-char	*ft_itoa_base(int n, const char *base);
+char	*ft_itoa_base(long n, const char *base);
 char	*ft_strchr(const char *str, int c);
 
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
-int		ft_putnbr(int nbr, const char *f_str, char bonus);
+int		ft_putnbr(int nbr, char bonus);
+int		ft_putptr(uintptr_t ptr, char *base);
+int		ft_puthex(unsigned int nbr, const char *f_str, char bonus);
 
 size_t	ft_strlen(const char *str);
 
 /* Printf */
-int     ft_printf(const char *kek, ...);
+int		ft_printf(const char *kek, ...);
 
 #endif

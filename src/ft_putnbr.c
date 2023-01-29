@@ -6,22 +6,22 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:50:08 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 16:13:44 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:04:34 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr, const char *f_str, char bonus)
+int	ft_putnbr(int nbr, char bonus)
 {
 	char	*num;
 	int		count;
 
 	if (nbr > 0)
 	{
-		if (*(f_str - 1) == ' ')
+		if (bonus == ' ')
 			write(STDOUT_FILENO, " ", 1);
-		else if (*(f_str - 1) == '+')
+		else if (bonus == '+')
 			write(STDOUT_FILENO, "+", 1);
 	}
 	num = ft_itoa_base(nbr, DECIMAL);
@@ -30,15 +30,45 @@ int	ft_putnbr(int nbr, const char *f_str, char bonus)
 	return (count);
 }
 
-int	ft_puthex(uintptr_t nbr, const char *f_str)
+int	ft_putptr(uintptr_t ptr, char *base)
 {
- 	char	*num;
+	uintptr_t	temp;
+	uintptr_t	base_len;	
+	int			count;
+
+	temp = ptr;
+	count = 0;
+	base_len = ft_strlen(base);
+	if (temp > (base_len - 1))
+	{
+		count += ft_putptr(temp / base_len, base);
+		count += ft_putptr(temp % base_len, base);
+	}
+	else
+	{
+		write(STDOUT_FILENO, (base + temp), 1);
+		count ++;
+	}
+	return (count);
+}
+
+int	ft_puthex(unsigned int nbr, const char *f_str, char bonus)
+{
+	char	*num;
 	int		count;
 
-	if ( == '#')
+	if (bonus == '#')
 	{
-		if (*f_str == 'x' || *f_str == 'p')
+		if (*f_str == 'x')
 			write(STDOUT_FILENO, "0x", 2);
-		else if (*)
+		else if (*f_str == 'X')
+			write(STDOUT_FILENO, "0X", 2);
 	}
+	if (*f_str == 'x')
+		num = ft_itoa_base(nbr, L_HEX);
+	else
+		num = ft_itoa_base(nbr, B_HEX);
+	count = ft_putstr(num);
+	free(num);
+	return (count);
 }
