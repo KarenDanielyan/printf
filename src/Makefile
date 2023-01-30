@@ -22,7 +22,7 @@ IFLAGS		=	-I./include
 
 AR			=	ar rcs
 
-$(BUILD)/%.o: %.c	$(DEP) $(SOURCES)
+$(BUILD)/%.o: %.c	$(DEP)
 				$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -c -o $@ $<
 
 all:		$(NAME)
@@ -35,6 +35,7 @@ $(NAME):	$(BUILD) $(OBJS)
 
 clean:		
 				$(RM) $(OBJS)
+				$(RM) $(BUILD)
 
 fclean:		clean
 				$(RM) $(NAME)

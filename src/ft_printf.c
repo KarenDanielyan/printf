@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:49:40 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/30 02:35:06 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:17:45 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	check_flag(const char *s, va_list args, char bonus)
 	else if (*s == 'u')
 		count += ft_putunbr(va_arg(args, unsigned int));
 	else if (*s == 's')
-		count += ft_putstr(va_arg(args, char *));
+		count += ft_putstr(va_arg(args, char *), bonus, s);
 	else if (*s == 'c')
 		count += ft_putchar(va_arg(args, int));
 	else if (*s == 'p')
@@ -40,17 +40,20 @@ static int	check_flag(const char *s, va_list args, char bonus)
 	return (count);
 }
 
-static char	*on_format(char *s, va_list args, int *count)
+static char	*on_f(char *s, va_list args, int *count)
 {
 	char	bonus;
 
 	bonus = 0;
 	if (*s == '%')
 	{
-		s ++;
-		while (*s && !ft_strchr(FORMAT_FLAGS, *s)
-			&& !ft_strchr(ESCAPE_SEQ, *s) && !ft_strchr(BONUS, *s))
+		s++;
+		while (*s && !ft_strchr(FORMAT_FLAGS, *s) && !ft_strchr(ESCAPE_SEQ, *s))
+		{
+			if (ft_strchr(BONUS, *s))
+				bonus = *s;
 			s ++;
+		}
 		if (ft_strchr(FORMAT_FLAGS, *s))
 			*count += check_flag(s, args, bonus);
 		else if (ft_strchr(ESCAPE_SEQ, *s))
@@ -58,9 +61,7 @@ static char	*on_format(char *s, va_list args, int *count)
 			write(STDOUT_FILENO, s, 1);
 			(*count)++;
 		}
-		else if (ft_strchr(BONUS, *s))
-			bonus = *s;
-		s ++;
+		s++;
 	}
 	return (s);
 }
@@ -79,9 +80,8 @@ int	ft_printf(const char *str, ...)
 	s = (char *)str;
 	while (*s)
 	{
-		if (*s == '%')
-			tmp = on_format(s, args, &count);
-		if (s == tmp && *s)
+		tmp = on_f(s, args, &count);
+		if (tmp == s)
 		{
 			write(STDOUT_FILENO, s, 1);
 			s ++;

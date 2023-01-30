@@ -2,3 +2,5 @@ src/build/
 src/*.a
 test/build/
 test/bin/
+src/printfTester/
+src/ft_printf_tester/

@@ -6,17 +6,25 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:09:15 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 20:22:08 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:29:32 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putstr(char *str, char bonus, const char *s)
 {
 	int	count;
+	int	i;
 
 	count = 0;
+	if (bonus == ' ' && s && ft_strchr(DECIMAL, *(s - 1)))
+	{
+		i = *(ft_strchr(DECIMAL, *(s - 1))) - '0';
+		count = i;
+		while (i--)
+			write(STDOUT_FILENO, " ", 1);
+	}
 	if (str)
 	{
 		while (*str)

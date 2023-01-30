@@ -24,7 +24,7 @@ LFLAGS		=	-L../src/ -lftprintf
 
 IFLAGS		=	-I../src/include 
 
-$(BUILD)/%.o: %.c $(DEP) $(SOURCES)
+$(BUILD)/%.o: %.c $(DEP)
 				$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
 
 all:			$(BIN)/$(NAME)

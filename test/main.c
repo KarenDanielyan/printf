@@ -6,7 +6,7 @@
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:04:42 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/30 02:24:09 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:25:37 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main()
 {
-    printf("%+d", 0);
-    ft_printf("%+d", 0);
-    return (0);
+    //int n = printf(" % d ", 0);
+    //int p = ft_printf(" % d ", 0);
+    //int n = printf(" % 1s", "");
+    int p = ft_printf(" % 1s", "");
 }
