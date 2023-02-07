@@ -1,42 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:09:15 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/30 15:29:32 by kdaniely         ###   ########.fr       */
+/*   Created: 2023/01/16 18:11:06 by kdaniely          #+#    #+#             */
+/*   Updated: 2023/02/07 14:03:53 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str, char bonus, const char *s)
+int	ft_putchar(char c)
 {
-	int	count;
-	int	i;
-
-	count = 0;
-	if (bonus == ' ' && s && ft_strchr(DECIMAL, *(s - 1)))
-	{
-		i = *(ft_strchr(DECIMAL, *(s - 1))) - '0';
-		count = i;
-		while (i--)
-			write(STDOUT_FILENO, " ", 1);
-	}
-	if (str)
-	{
-		while (*str)
-		{
-			write(STDOUT_FILENO, str++, 1);
-			count ++;
-		}
-	}
-	else
-	{
-		count = 6;
-		write(STDOUT_FILENO, "(null)", 6);
-	}
-	return (count);
+	write(STDOUT_FILENO, &c, 1);
+	return (1);
 }

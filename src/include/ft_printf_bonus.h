@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:47:39 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/02/07 14:56:31 by kdaniely         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:48:33 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include <stdarg.h>
 # include <stdlib.h>
@@ -20,6 +20,7 @@
 # include <stdint.h>
 
 # define OFFSET			'0'
+# define BONUS			"# +"
 # define FORMAT_FLAGS 	"cspdiuxX%"
 # define ESCAPE_SEQ		"\\\"\t\b\a\?\r\f\v\n"
 # define DECIMAL		"0123456789"
@@ -33,10 +34,10 @@ char	*ft_strchr(const char *str, int c);
 
 int		ft_putchar(char c);
 int		ft_putunbr(unsigned int nbr);
-int		ft_putnbr(int nbr);
+int		ft_putnbr(int nbr, char bonus);
 int		ft_putptr(uintptr_t ptr, char *base);
-int		ft_putstr(char *str);
-int		ft_puthex(unsigned int nbr, const char *f_str);
+int		ft_putstr(char *str, char bonus, const char *s);
+int		ft_puthex(unsigned int nbr, const char *f_str, char bonus);
 
 size_t	ft_strlen(const char *str);
 

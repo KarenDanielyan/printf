@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaniely <kdaniely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:11:06 by kdaniely          #+#    #+#             */
-/*   Updated: 2023/01/29 12:56:10 by kdaniely         ###   ########.fr       */
+/*   Created: 2023/01/14 23:35:43 by kdaniely          #+#    #+#             */
+/*   Updated: 2023/02/07 14:05:05 by kdaniely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int	ft_putchar(char c)
+char	*ft_strchr(const char *str, int c)
 {
-	write(STDOUT_FILENO, &c, 1);
-	return (1);
+	char	*buf;
+
+	buf = (char *)str;
+	while (*buf)
+	{
+		if (*buf == (unsigned char)(c & 0xFF))
+			return (buf);
+		buf++;
+	}
+	if (*buf == c)
+		return (buf);
+	else
+		return (NULL);
 }
